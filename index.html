@@ -1,0 +1,172 @@
+from pathlib import Path
+
+html = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Yuv ❤️</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffb6c1,#ffd1dc);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+text-align:center;
+color:#333;
+}
+.container{
+width:90%;
+max-width:700px;
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 0 20px rgba(0,0,0,.15);
+}
+.hidden{display:none;}
+button{
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-size:16px;
+}
+.yes{background:#ff4f81;color:white;}
+.no{background:#ddd;}
+.heart{
+font-size:120px;
+cursor:pointer;
+animation:pulse 1s infinite;
+}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+input{
+width:80%;
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+img{
+width:260px;
+border-radius:20px;
+margin-bottom:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div id="page1">
+<h2>For My Sweet Yuv ❤️</h2>
+<div class="heart" onclick="nextPage(2)">❤️</div>
+<p>Click the heart baby 🥹💕</p>
+</div>
+
+<div id="page2" class="hidden">
+<h2>Q1 😿❤️</h2>
+<p>Riya ne aapko hurt kara hai na bahottt?</p>
+<button class="yes" onclick="nextPage(3)">Yes</button>
+<button class="no">No 😤</button>
+</div>
+
+<div id="page3" class="hidden">
+<h2>Q2 🫣❤️</h2>
+<p>Aap Riya se kitna pyaar karte ho?</p>
+<input id="loveInput" placeholder="Write here...">
+<br><br>
+<button class="yes" onclick="showCompliment()">Submit ❤️</button>
+<p id="compliment"></p>
+</div>
+
+<div id="page4" class="hidden">
+<h2>Q3 🫣🫀✨</h2>
+<p>Kya aap mere surprise se happy hain?</p>
+<button class="yes" onclick="nextPage(5)">Yes ❤️</button>
+<button class="no">No 😭</button>
+</div>
+
+<div id="page5" class="hidden">
+
+<img src="photo.png" alt="Photo">
+
+<h2>❤️ For My Yuv ❤️</h2>
+
+<p style="text-align:left;line-height:1.8;">
+ik baby mene apko bahot hurt kardia hai 🥹😭❤️<br><br>
+
+but trust me I love you more than anything 🙂❤️🫶🏻<br><br>
+
+aajse or isi wakt se aap jesa bologe me waisa karugi sachi me 😭❤️<br><br>
+
+mere innocent sweet boy 😋❤️<br><br>
+
+uuummmmaaaahhh 😋❤️😘<br><br>
+
+plsss apni mumma ko maaf kardo 🥹❤️<br><br>
+
+plsss bacha plsss apni riu ko maaf kardo 👉🏻👈🏻❤️<br><br>
+
+me abse aisi galti kabhi nhi karungi sachi me promise 😿🫀<br><br>
+
+mujhe bahot pyaar hai aapse isliye toh raat ke 2-3 baje aapke liye yeh web banayi mene 😭🫶🏻❤️✨<br><br>
+
+plss my boyyy ek pyaari si smile kro abhi pls pls pls kiya???<br><br>
+
+Kiya??? 😭❤️<br><br>
+
+Kardia hoga ik kyuki Mera yuvu meri sari baatein manta hai hehehe 🫣❤️<br><br>
+
+i love you my boy ❤️
+</p>
+
+<button class="yes" onclick="showLoveMessage()">Maaf Kiya ❤️</button>
+
+</div>
+
+</div>
+
+<script>
+function nextPage(num){
+for(let i=1;i<=5;i++){
+let page=document.getElementById("page"+i);
+if(page) page.classList.add("hidden");
+}
+document.getElementById("page"+num).classList.remove("hidden");
+}
+
+function showCompliment(){
+const compliments=[
+"Awww mere pyare se bache 🥹❤️",
+"Hehehe mera sweet Yuvu 😋❤️",
+"Ummmmmaaaahhh 😘❤️",
+"Mera cutest boy 🫣💕",
+"Awwww kitna pyaara answer ❤️"
+];
+let random=compliments[Math.floor(Math.random()*compliments.length)];
+document.getElementById("compliment").innerHTML=random;
+setTimeout(()=>{nextPage(4);},2000);
+}
+
+function showLoveMessage(){
+document.getElementById("page5").innerHTML=`
+<img src="photo.png" alt="Photo">
+<h1 style="color:#ff4f81;">I LOVE YOU SO YUVVV 🥺❤️</h1>
+<p style="font-size:22px;">Thank you for forgiving me 😭🫶🏻❤️</p>
+<p>Ummmmmaaaahhh 😘❤️✨</p>
+`;
+}
+</script>
+
+</body>
+</html>"""
+path = "/mnt/data/yuv_sorry_website.html"
+Path(path).write_text(html, encoding="utf-8")
+print(path)
